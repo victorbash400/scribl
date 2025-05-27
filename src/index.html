@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Get started with Add-on development using React and JavaScript" />
+        <meta name="keywords" content="Adobe, Express, Add-On, React, JavaScript" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Scribl</title>
+        <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/react
+
+-dom@18.2.0/umd/react-dom.development.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/babel-standalone@7.22.5/babel.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://new.express.adobe.com/static/add-on-sdk/sdk.js"></script>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel" data-presets="react" src="index.js"></script>
+        <script type="text/babel" src="components/App.jsx"></script>
+        <script type="text/babel" src="components/Topbar.jsx"></script>
+        <script type="text/babel" src="components/CanvasArea.jsx"></script>
+        <script type="text/babel" src="components/PromptBar.jsx"></script>
+    </body>
+</html>

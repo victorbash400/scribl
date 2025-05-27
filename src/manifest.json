@@ -1,0 +1,21 @@
+{
+    "testId": "fb448b62-885c-4978-91c2-2e27afaaea0b",
+    "name": "Scribl",
+    "version": "1.0.0",
+    "manifestVersion": 2,
+    "requirements": {
+        "apps": [
+            {
+                "name": "Express",
+                "apiVersion": 1
+            }
+        ]
+    },
+    "entryPoints": [
+        {
+            "type": "panel",
+            "id": "panel1",
+            "main": "index.html"
+        }
+    ]
+}
