@@ -3,7 +3,7 @@
 
 <div align="center">
 
-![Scribl Banner](https://via.placeholder.com/800x200/ff69b4/ffffff?text=✨+Scribl+✨)
+![Scribl Banner](https://github.com/user-attachments/assets/484fa27a-b304-41a0-a020-9ca077eb1244)
 
 *Where creativity meets artificial intelligence*
 
