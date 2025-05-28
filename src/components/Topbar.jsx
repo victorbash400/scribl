@@ -6,7 +6,7 @@ import {
   Circle, 
   Palette, 
   Eye, 
-  RotateCcw, 
+  RotateCcw,  
   Check 
 } from 'lucide-react';
 import FloatingPreview from './FloatingPreview';
@@ -50,6 +50,7 @@ const Topbar = ({
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const [previewPosition, setPreviewPosition] = useState({ x: 50, y: 100 });
   const [hoveredButton, setHoveredButton] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
   const menuRef = useRef(null);
   const scrollRef = useRef(null);
 
@@ -76,14 +77,34 @@ const Topbar = ({
   return (
     <>
       <div className="fixed top-2 left-1/2 transform -translate-x-1/2 w-auto max-w-[calc(100vw-24px)] z-20">
-        <div className="relative group">
+        <div 
+          className="relative group transition-all duration-300 ease-out backdrop-blur-xl border-2 rounded-2xl overflow-hidden"
+          style={{
+            boxShadow: isHovered
+              ? '0 12px 40px rgba(255, 120, 200, 0.6), inset 0 2px 4px rgba(255,255,255,0.8), 0 0 20px rgba(168, 85, 247, 0.2)'
+              : '0 6px 24px rgba(0,0,0,0.15), inset 0 1px 2px rgba(255,255,255,0.5), 0 2px 8px rgba(139, 92, 246, 0.1)',
+            background: 'radial-gradient(ellipse at top left, rgba(255,255,255,0.98) 0%, rgba(250,245,255,0.95) 100%)',
+            borderColor: isHovered ? 'rgba(244, 114, 182, 0.7)' : 'rgba(209, 213, 219, 0.7)',
+          }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {/* Shimmer effect overlay */}
+          <div className="absolute inset-0 rounded-2xl pointer-events-none overflow-hidden">
+            <div
+              className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 transform transition-transform duration-1000 ${
+                isHovered ? 'translate-x-full' : '-translate-x-full'
+              }`}
+            />
+          </div>
+
           {/* Gradient fade edges for scroll indication */}
-          <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-white/90 to-transparent backdrop-blur-sm z-10 pointer-events-none rounded-l-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-l from-white/90 to-transparent backdrop-blur-sm z-10 pointer-events-none rounded-r-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-white/90 to-transparent backdrop-blur-sm z-10 pointer-events-none rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-l from-white/90 to-transparent backdrop-blur-sm z-10 pointer-events-none rounded-r-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           
           <div 
             ref={scrollRef}
-            className="flex items-center gap-0.5 bg-white/80 backdrop-blur-xl border border-pink-100/60 rounded-xl px-2 py-1 shadow-lg shadow-pink-100/30 overflow-x-auto scrollbar-hide hover:bg-white/90 transition-all duration-300"
+            className="relative flex items-center gap-0.5 px-3 py-2.5 overflow-x-auto scrollbar-hide"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
